@@ -8,18 +8,27 @@ pipeline {
         }
         stage('Test') {
             steps {
+                dir ('lib') {
+                    git branch: "master", credentialsId: "2cfb403c-be21-4fac-94d7-c8cd5c531feb", url: "https://gitlab.dicelab.net
+/JAC-IDM/python-lib.git"
+                }
                 sh """
                 pip2 install mock --user
+                ./test/unit/cond-mail/help_message.py
+                ./test/unit/cond-mail/run_program.py
+                ./test/unit/cond-mail/main.py
                 """
             }
         }
         stage('SonarQube analysis') {
             steps {
+                sh './test/unit/sonarqube_code_coverage.sh'
+                sh 'rm -rf lib'
                 script {
                     scannerHome = tool 'sonar-scanner';
                 }
                 withSonarQubeEnv('Sonar') {
-                    sh "${scannerHome}/bin/sonar-scanner"
+                    sh "${scannerHome}/bin/sonar-scanner -Dsonar-project.JACIDM.properties"
                 }
             
             }
