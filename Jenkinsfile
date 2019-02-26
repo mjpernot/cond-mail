@@ -13,10 +13,14 @@ pipeline {
 /JAC-IDM/python-lib.git"
                 }
                 sh """
+                virtualenv test_env
+                source test_env/bin/activate
                 pip2 install mock --user
                 ./test/unit/cond-mail/help_message.py
                 ./test/unit/cond-mail/run_program.py
                 ./test/unit/cond-mail/main.py
+                deactivate
+                rm -rf test_env
                 """
             }
         }
