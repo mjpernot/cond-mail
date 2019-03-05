@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 The format is based on "Keep a Changelog".  This project adheres to Semantic Versioning.
 
 
+## [3.2.2] - 2019-03-01
+### Changed
+- main:  Refactored code to bring into standard convention.
+
+
 ## [3.2.1] - 2018-11-01
 ### Changed
 - run_program:  Changed Mail instance name from "MAIL" to "mail".
