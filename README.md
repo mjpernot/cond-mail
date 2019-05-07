@@ -146,35 +146,8 @@ pip install -r requirements-python-lib.txt --target lib --trusted-host pypi.appd
 
 ```
 cd {Python_Project}/cond-mail
-```
-
-### Unit:  help_message
-
-```
 test/unit/cond_mail/help_message.py
-```
-
-### Unit:  
-
-```
-test/unit/cond_mail/
-```
-
-### Unit:  
-
-```
-test/unit/cond_mail/
-```
-
-### Unit:  run_program
-
-```
 test/unit/cond_mail/run_program.py
-```
-
-### Unit:  main
-
-```
 test/unit/cond_mail/main.py
 ```
 
@@ -228,11 +201,6 @@ pip install -r requirements-python-lib.txt --target lib --trusted-host pypi.appd
 
 ```
 cd {Python_Project}/cond-mail
-```
-
-### Integration:  
-
-```
 test/integration/cond_mail/
 ```
 
