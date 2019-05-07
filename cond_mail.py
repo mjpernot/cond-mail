@@ -69,6 +69,8 @@ def run_program(args_array, **kwargs):
 
     """
 
+    args_array = dict(args_array)
+
     mail = gen_class.Mail(
         args_array["-t"], " ".join(args_array["-s"]),
         args_array.get("-f", getpass.getuser() + "@" + socket.gethostname()))
