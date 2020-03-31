@@ -9,12 +9,12 @@ pipeline {
         stage('Test') {
             steps {
                 dir ('lib') {
-                    git branch: "master", credentialsId: "2cfb403c-be21-4fac-94d7-c8cd5c531feb", url: "https://gitlab.dicelab.net/JAC-IDM/python-lib.git"
+                    git branch: "master", credentialsId: "2cfb403c-be21-4fac-94d7-c8cd5c531feb", url: "https://gitlab.code.dicelab.net/JAC-IDM/python-lib.git"
                 }
                 sh """
                 virtualenv test_env
                 source test_env/bin/activate
-                pip2 install mock --user
+                pip2 install mock==2.0.0 --user
                 ./test/unit/cond-mail/help_message.py
                 ./test/unit/cond-mail/run_program.py
                 ./test/unit/cond-mail/main.py
