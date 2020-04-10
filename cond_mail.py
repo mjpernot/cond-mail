@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python -w
 # Classification (U)
 
 """Program:     cond_mail.py
