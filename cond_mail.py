@@ -103,6 +103,7 @@ def main():
     opt_val_list = ["-s", "-t", "-f"]
 
     # Process argument list from command line.
+    # Reviewed:  arg_parse2 checks all options on command line for validity.
     args_array = arg_parser.arg_parse2(
         sys.argv, opt_val_list, multi_val=opt_multi_list)  # NOSONAR
 
