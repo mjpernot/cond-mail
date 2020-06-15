@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 The format is based on "Keep a Changelog".  This project adheres to Semantic Versioning.
 
 
+## [3.2.4] - 2020-06-15
+### Changed
+- Documentation updates.
+
+
 ## [3.2.3] - 2019-05-07
 ### Fixed
 - run_program:  Fixed problem with mutable default arguments issue.

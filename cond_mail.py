@@ -7,7 +7,8 @@
         send if there is data in the text input.
 
     Usage:
-        Text Input | cond_mail.py -s subject -t to_email(s) [-f from_email]
+        Text Input | cond_mail.py -s subject
+            -t to_email1 [to_email2 ...] [-f from_email]
             [-v | -h]
         cond_mail.py -s subject -t to_email(s) [-f from_email] < text_file
 
@@ -38,7 +39,6 @@ import lib.arg_parser as arg_parser
 import lib.gen_libs as gen_libs
 import version
 
-# Version
 __version__ = version.__version__
 
 
@@ -64,17 +64,13 @@ def run_program(args_array, **kwargs):
 
     Arguments:
         (input) args_array -> Dict of command line options and values.
-        (input) **kwargs:
-            None
 
     """
 
     args_array = dict(args_array)
-
     mail = gen_class.Mail(
         args_array["-t"], " ".join(args_array["-s"]),
         args_array.get("-f", getpass.getuser() + "@" + socket.gethostname()))
-
     mail.read_stdin()
 
     if mail.msg and len(mail.msg.rstrip()) > 0:
