@@ -57,7 +57,7 @@ Breaking Change
 
 ## [2.2.0] - 2017-08-16
 ### Changed
-- Help_Message:  Replace docstring with printing the programs __doc__.
+- Help_Message:  Replace docstring with printing the programs \_\_doc\_\_.
 - Change single quotes to double quotes.
 - Changed local libraries to use modules in ./lib directory.
 
