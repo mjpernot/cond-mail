@@ -47,25 +47,19 @@ pipeline {
                                 "pattern": "./*.py",
                                 "recursive": false,
                                 "excludePatterns": [],
-                                "target": "generic-local/highpoint/cond-mail/"
+                                "target": "pypi-proj-local/highpoint/cond-mail/"
                             },
                             {
                                 "pattern": "./*.txt",
                                 "recursive": false,
                                 "excludePatterns": [],
-                                "target": "generic-local/highpoint/cond-mail/"
+                                "target": "pypi-proj-local/highpoint/cond-mail/"
                             },
                             {
                                 "pattern": "./*.md",
                                 "recursive": false,
                                 "excludePatterns": [],
-                                "target": "generic-local/highpoint/cond-mail/"
-                            },
-                            {
-                                "pattern": "*.TEMPLATE",
-                                "recursive": true,
-                                "excludePatterns": [],
-                                "target": "generic-local/highpoint/cond-mail/config/"
+                                "target": "pypi-proj-local/highpoint/cond-mail/"
                             }
                         ]
                     }"""
