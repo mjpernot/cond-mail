@@ -94,12 +94,13 @@ def main():
 
     """
 
+    cmdline = gen_libs.get_inst(sys)
     opt_multi_list = ["-t", "-s"]
     opt_req_list = ["-s", "-t"]
     opt_val_list = ["-s", "-t", "-f"]
 
     # Process argument list from command line.
-    args_array = arg_parser.arg_parse2(sys.argv, opt_val_list,
+    args_array = arg_parser.arg_parse2(cmdline.argv, opt_val_list,
                                        multi_val=opt_multi_list)
 
     if not gen_libs.help_func(args_array, __version__, help_message) \
