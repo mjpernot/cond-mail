@@ -1,19 +1,6 @@
 #!/usr/bin/python
 # Classification (U)
 
-###############################################################################
-#
-# Program:      run_program.py
-#
-# Class Dependencies:
-#               None
-#
-# Library Dependenices:
-#               cond_mail       => v3.2.0 or higher
-#               lib/gen_libs    => v2.2.0 or higher
-#
-###############################################################################
-
 """Program:  run_program.py
 
     Description:  Unit testing of run_program in cond_mail.py.
@@ -22,7 +9,6 @@
         test/unit/cond_mail/run_program.py
 
     Arguments:
-        None
 
 """
 
@@ -43,10 +29,8 @@ import mock
 # Local
 sys.path.append(os.getcwd())
 import cond_mail
-import lib.gen_libs as gen_libs
 import version
 
-# Version Information
 __version__ = version.__version__
 
 
@@ -56,14 +40,7 @@ class Mail(object):
 
     Description:  Class representation of the gen_class.Mail class.
 
-    Super-Class:  object
-
-    Sub-Classes:  None
-
     Methods:
-        __init__ -> Initialize configuration environment.
-        read_stdin -> Mock of reading from standard in.
-        send_mail -> Mock of sending an email.
 
     """
 
@@ -92,7 +69,6 @@ class Mail(object):
         Description:  Mock of reading from standard in.
 
         Arguments:
-            None
 
         """
 
@@ -105,7 +81,6 @@ class Mail(object):
         Description:  Mock of sending an email.
 
         Arguments:
-            None
 
         """
 
@@ -117,10 +92,6 @@ class UnitTest(unittest.TestCase):
     """Class:  UnitTest
 
     Description:  Class which is a representation of a unit testing.
-
-    Super-Class:  unittest.TestCase
-
-    Sub-Classes:  None
 
     Methods:
         setUp -> Unit testing initilization.
@@ -137,7 +108,6 @@ class UnitTest(unittest.TestCase):
         Description:  Initialization for unit testing.
 
         Arguments:
-            None
 
         """
 
@@ -151,13 +121,11 @@ class UnitTest(unittest.TestCase):
         Description:  Test if mail message is an empty string.
 
         Arguments:
-            mock_mail -> Mock Ref:  cond_mail.gen_class.Mail
 
         """
 
         mock_mail.return_value = Mail(self.args_array["-t"],
                                       self.args_array["-s"])
-
         mock_mail.return_value.msg = ""
 
         self.assertFalse(cond_mail.run_program(self.args_array))
@@ -170,7 +138,6 @@ class UnitTest(unittest.TestCase):
         Description:  Test mail message.
 
         Arguments:
-            mock_mail -> Mock Ref:  cond_mail.gen_class.Mail
 
         """
 
@@ -187,13 +154,11 @@ class UnitTest(unittest.TestCase):
         Description:  Test if mail message is empty.
 
         Arguments:
-            mock_mail -> Mock Ref:  cond_mail.gen_class.Mail
 
         """
 
         mock_mail.return_value = Mail(self.args_array["-t"],
                                       self.args_array["-s"])
-
         mock_mail.return_value.msg = None
 
         self.assertFalse(cond_mail.run_program(self.args_array))
