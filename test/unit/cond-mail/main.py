@@ -1,19 +1,6 @@
 #!/usr/bin/python
 # Classification (U)
 
-###############################################################################
-#
-# Program:      main.py
-#
-# Class Dependencies:
-#               None
-#
-# Library Dependenices:
-#               cond_mail       => v2.1.0 or higher
-#               lib/gen_libs    => v2.5.0 or higher
-#
-###############################################################################
-
 """Program:  main.py
 
     Description:  Unit testing of main in cond_mail.py.
@@ -22,7 +9,6 @@
         test/unit/cond_mail/main.py
 
     Arguments:
-        None
 
 """
 
@@ -43,10 +29,8 @@ import mock
 # Local
 sys.path.append(os.getcwd())
 import cond_mail
-import lib.gen_libs as gen_libs
 import version
 
-# Version Information
 __version__ = version.__version__
 
 
@@ -55,10 +39,6 @@ class UnitTest(unittest.TestCase):
     """Class:  UnitTest
 
     Description:  Class which is a representation of a unit testing.
-
-    Super-Class:  unittest.TestCase
-
-    Sub-Classes:  None
 
     Methods:
         setUp -> Unit testing initilization.
@@ -76,7 +56,6 @@ class UnitTest(unittest.TestCase):
         Description:  Initialization for unit testing.
 
         Arguments:
-            None
 
         """
 
@@ -92,9 +71,6 @@ class UnitTest(unittest.TestCase):
         Description:  Test with arg_require returns False.
 
         Arguments:
-            mock_arg -> Mock Ref:  cond_mail.arg_parser
-            mock_help -> Mock Ref:  cond_mail.gen_libs.help_func
-            mock_run -> Mock Ref:  cond_mail.run_program
 
         """
 
@@ -114,8 +90,6 @@ class UnitTest(unittest.TestCase):
         Description:  Test with arg_require returns True.
 
         Arguments:
-            mock_arg -> Mock Ref:  cond_mail.arg_parser
-            mock_help -> Mock Ref:  cond_mail.gen_libs.help_func
 
         """
 
@@ -134,8 +108,6 @@ class UnitTest(unittest.TestCase):
         Description:  Test with help_func returns False.
 
         Arguments:
-            mock_arg -> Mock Ref:  cond_mail.arg_parser
-            mock_help -> Mock Ref:  cond_mail.gen_libs.help_func
 
         """
 
@@ -154,8 +126,6 @@ class UnitTest(unittest.TestCase):
         Description:  Test with help_func returns True.
 
         Arguments:
-            mock_arg -> Mock Ref:  cond_mail.arg_parser.arg_parse2
-            mock_help -> Mock Ref:  cond_mail.gen_libs.help_func
 
         """
 
