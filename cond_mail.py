@@ -103,16 +103,18 @@ def main():
     """
 
     cmdline = gen_libs.get_inst(sys)
+    file_chk_list = ["-i"]
     opt_multi_list = ["-t", "-s"]
     opt_req_list = ["-s", "-t"]
-    opt_val_list = ["-s", "-t", "-f"]
+    opt_val_list = ["-s", "-t", "-f", "-i"]
 
     # Process argument list from command line.
     args_array = arg_parser.arg_parse2(cmdline.argv, opt_val_list,
                                        multi_val=opt_multi_list)
 
     if not gen_libs.help_func(args_array, __version__, help_message) \
-       and not arg_parser.arg_require(args_array, opt_req_list):
+       and not arg_parser.arg_require(args_array, opt_req_list) \
+       and not arg_parser.arg_file_chk(args_array, file_chk_list):
         run_program(args_array)
 
 
