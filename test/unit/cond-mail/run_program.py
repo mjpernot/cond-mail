@@ -95,6 +95,9 @@ class UnitTest(unittest.TestCase):
 
     Methods:
         setUp -> Unit testing initilization.
+        test_multiline_file -> Test with -i option with multiple lines.
+        test_empty_file -> Test with -i option with empty file.
+        test_input_file -> Test with -i option.
         test_empty_str_mail_msg2 -> Test if mail message is an empty string.
         test_empty_str_mail_msg -> Test if mail message is an empty string.
         test_mail_msg -> Test mail message.
@@ -113,11 +116,57 @@ class UnitTest(unittest.TestCase):
         """
 
         self.args_array = {"-t": "To line", "-s": "Subject Line"}
+        self.args_array2 = {"-t": "To line", "-s": "Subject Line",
+                            "-i": "test/unit/cond-mail/basefiles/infile1.txt"}
+        self.args_array3 = {"-t": "To line", "-s": "Subject Line",
+                            "-i": "test/unit/cond-mail/basefiles/infile2.txt"}
+        self.args_array4 = {"-t": "To line", "-s": "Subject Line",
+                            "-i": "test/unit/cond-mail/basefiles/infile3.txt"}
 
-    # This is a way to use the class but still mock some of the methods.
-    @mock.patch("cond_mail.gen_class.Mail.read_stdin",
-                mock.Mock(return_value=True))
-    def test_empty_str_mail_msg2(self):
+    @mock.patch("cond_mail.gen_class.Mail")
+    def test_multiline_file(self, mock_send):
+
+        """Function:  test_multiline_file
+
+        Description:  Test with -i option with multiple lines.
+
+        Arguments:
+
+        """
+
+        mock_send.send_mail.return_value = True
+
+        self.assertFalse(cond_mail.run_program(self.args_array4))
+
+    def test_empty_file(self):
+
+        """Function:  test_empty_file
+
+        Description:  Test with -i option with empty file.
+
+        Arguments:
+
+        """
+
+        self.assertFalse(cond_mail.run_program(self.args_array3))
+
+    @mock.patch("cond_mail.gen_class.Mail")
+    def test_input_file(self, mock_send):
+
+        """Function:  test_input_file
+
+        Description:  Test with -i option.
+
+        Arguments:
+
+        """
+
+        mock_send.send_mail.return_value = True
+
+        self.assertFalse(cond_mail.run_program(self.args_array2))
+
+    @mock.patch("cond_mail.gen_class.Mail.read_stdin")
+    def test_empty_str_mail_msg2(self, mock_stdin):
 
         """Function:  test_empty_str_mail_msg
 
@@ -126,6 +175,8 @@ class UnitTest(unittest.TestCase):
         Arguments:
 
         """
+
+        mock_stdin.read_stdin.return_value = True
 
         self.assertFalse(cond_mail.run_program(self.args_array))
 
