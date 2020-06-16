@@ -79,7 +79,7 @@ class UnitTest(unittest.TestCase):
 
         mock_arg.arg_parse2.return_value = self.args
         mock_arg.arg_require.return_value = False
-        mock_arg.arg_file_chk.return_value = True
+        mock_arg.arg_file_chk.return_value = False
 
         self.assertFalse(cond_mail.main())
 
@@ -98,7 +98,7 @@ class UnitTest(unittest.TestCase):
 
         mock_arg.arg_parse2.return_value = self.args
         mock_arg.arg_require.return_value = False
-        mock_arg.arg_file_chk.return_value = True
+        mock_arg.arg_file_chk.return_value = False
 
         self.assertFalse(cond_mail.main())
 
