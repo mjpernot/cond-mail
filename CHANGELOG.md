@@ -12,6 +12,7 @@ The format is based on "Keep a Changelog".  This project adheres to Semantic Ver
 - main:  Fixed handling command line arguments from SonarQube scan finding.
 
 ### Changed
+- run_program:  Added -i option to handle file processing.
 - main: Added -i option to handle file and validating the file.
 - Documentation updates.
 

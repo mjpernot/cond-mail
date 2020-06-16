@@ -79,7 +79,16 @@ def run_program(args_array, **kwargs):
     mail = gen_class.Mail(
         args_array["-t"], " ".join(args_array["-s"]),
         args_array.get("-f", getpass.getuser() + "@" + socket.gethostname()))
-    mail.read_stdin()
+
+    if args_array.get("-i", False):
+
+        with open(args_array["-i"]) as f_hdlr:
+
+            for line in [x.rstrip().rstrip("\n") for x in f_hdlr]:
+                mail.add_2_msg(line)
+
+    else:
+        mail.read_stdin()
 
     if mail.msg and len(mail.msg.rstrip()) > 0:
         mail.send_mail()
