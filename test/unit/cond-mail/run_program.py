@@ -95,6 +95,7 @@ class UnitTest(unittest.TestCase):
 
     Methods:
         setUp -> Unit testing initilization.
+        test_empty_str_mail_msg2 -> Test if mail message is an empty string.
         test_empty_str_mail_msg -> Test if mail message is an empty string.
         test_mail_msg -> Test mail message.
         test_empty_mail_msg -> Test if mail message is empty.
@@ -112,6 +113,21 @@ class UnitTest(unittest.TestCase):
         """
 
         self.args_array = {"-t": "To line", "-s": "Subject Line"}
+
+    # This is a way to use the class but still mock some of the methods.
+    @mock.patch("cond_mail.gen_class.Mail.read_stdin",
+                mock.Mock(return_value=True))
+    def test_empty_str_mail_msg2(self):
+
+        """Function:  test_empty_str_mail_msg
+
+        Description:  Test if mail message is an empty string.
+
+        Arguments:
+
+        """
+
+        self.assertFalse(cond_mail.run_program(self.args_array))
 
     @mock.patch("cond_mail.gen_class.Mail")
     def test_empty_str_mail_msg(self, mock_mail):
