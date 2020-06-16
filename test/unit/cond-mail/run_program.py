@@ -115,12 +115,14 @@ class UnitTest(unittest.TestCase):
 
         """
 
-        self.args_array = {"-t": "To line", "-s": "Subject Line"}
-        self.args_array2 = {"-t": "To line", "-s": "Subject Line",
+        self.toline = "To line"
+        self.subject = "Subject Line"
+        self.args_array = {"-t": self.toline, "-s": self.subject}
+        self.args_array2 = {"-t": self.toline, "-s": self.subject,
                             "-i": "test/unit/cond-mail/basefiles/infile1.txt"}
-        self.args_array3 = {"-t": "To line", "-s": "Subject Line",
+        self.args_array3 = {"-t": self.toline, "-s": self.subject,
                             "-i": "test/unit/cond-mail/basefiles/infile2.txt"}
-        self.args_array4 = {"-t": "To line", "-s": "Subject Line",
+        self.args_array4 = {"-t": self.toline, "-s": self.subject,
                             "-i": "test/unit/cond-mail/basefiles/infile3.txt"}
 
     @mock.patch("cond_mail.gen_class.Mail")
