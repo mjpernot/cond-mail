@@ -5,6 +5,9 @@ The format is based on "Keep a Changelog".  This project adheres to Semantic Ver
 
 
 ## [3.2.4] - 2020-06-15
+### Added
+- Added -i option to allow for reading from a file instead of using standard in or pipes.
+
 ### Fixed
 - main:  Fixed handling command line arguments from SonarQube scan finding.
 

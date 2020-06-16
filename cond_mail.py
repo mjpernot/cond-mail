@@ -8,21 +8,29 @@
 
     Usage:
         Text Input | cond_mail.py -s subject
-            -t to_email1 [to_email2 ...] [-f from_email]
+            -t to_email1 [to_email2 ...] [-f from_email] [-i [path] filename]
+        cond_mail.py -s subject -t to_email1 [to_email2 ...]
+            [-f from_email] < text_file
+        cond_mail.py -s subject -t to_email1 [to_email2 ...] [-f from_email]
+            [-i [path] filename]
             [-v | -h]
-        cond_mail.py -s subject -t to_email(s) [-f from_email] < text_file
 
     Arguments:
-        -s subject line => Subject line.  Required argument.
-        -t to_email(s) => To email address(es).  Multiple email addresses are
+        -s subject line -> Subject line.  Required argument.
+        -t to_email(s) -> To email address(es).  Multiple email addresses are
             space-delimited.  Required argument.
-        -f from_email => From email address.  Format:  user_name@domain_name.
-        -v => Display version of this program.
-        -h => Help and usage message.
+        -f from_email -> From email address.  Format:  user_name@domain_name.
+        -i filename -> Path and file name to read into email body.
+        -v -> Display version of this program.
+        -h -> Help and usage message.
+
+        NOTE 1:  -v or -h overrides the other options.
+        NOTE 2:  -i option will override the standard in or pipe syntax.
 
     Example:
         cat text_file | cond_mail.py -s text -t d123456@coe.ic.gov
         cond_mail.py -s subject line -t d123456@coe.ic.gov < text_file
+        cond_mail.py -s subject line -t d123456@coe.ic.gov -i text_file
 
 """
 
