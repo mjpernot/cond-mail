@@ -42,6 +42,9 @@ class UnitTest(unittest.TestCase):
 
     Methods:
         setUp -> Unit testing initilization.
+        test_run_program -> Test with run_program.
+        test_file_chk_false -> Test with arg_file_chk returns False.
+        test_file_chk_true -> Test with arg_file_chk returns True.
         test_require_false -> Test with arg_require returns False.
         test_require_true -> Test with arg_require returns True.
         test_help_false ->  Test with help_func returns False.
@@ -61,10 +64,65 @@ class UnitTest(unittest.TestCase):
 
         self.args = {"-s": "Subject line", "-t": "To Line Address"}
 
-    @mock.patch("cond_mail.run_program")
-    @mock.patch("cond_mail.gen_libs.help_func")
+    @mock.patch("cond_mail.run_program", mock.Mock(return_value=True))
+    @mock.patch("cond_mail.gen_libs.help_func", mock.Mock(return_value=False))
     @mock.patch("cond_mail.arg_parser")
-    def test_require_false(self, mock_arg, mock_help, mock_run):
+    def test_run_program(self, mock_arg):
+
+        """Function:  test_run_program
+
+        Description:  Test with run_program.
+
+        Arguments:
+
+        """
+
+        mock_arg.arg_parse2.return_value = self.args
+        mock_arg.arg_require.return_value = False
+        mock_arg.arg_file_chk.return_value = True
+
+        self.assertFalse(cond_mail.main())
+
+    @mock.patch("cond_mail.run_program", mock.Mock(return_value=True))
+    @mock.patch("cond_mail.gen_libs.help_func", mock.Mock(return_value=False))
+    @mock.patch("cond_mail.arg_parser")
+    def test_file_chk_false(self, mock_arg):
+
+        """Function:  test_file_chk_false
+
+        Description:  Test with arg_file_chk returns False.
+
+        Arguments:
+
+        """
+
+        mock_arg.arg_parse2.return_value = self.args
+        mock_arg.arg_require.return_value = False
+        mock_arg.arg_file_chk.return_value = True
+
+        self.assertFalse(cond_mail.main())
+
+    @mock.patch("cond_mail.gen_libs.help_func", mock.Mock(return_value=False))
+    @mock.patch("cond_mail.arg_parser")
+    def test_file_chk_true(self, mock_arg):
+
+        """Function:  test_file_chk_true
+
+        Description:  Test with arg_file_chk returns True.
+
+        Arguments:
+
+        """
+
+        mock_arg.arg_parse2.return_value = self.args
+        mock_arg.arg_require.return_value = False
+        mock_arg.arg_file_chk.return_value = True
+
+        self.assertFalse(cond_mail.main())
+
+    @mock.patch("cond_mail.gen_libs.help_func", mock.Mock(return_value=False))
+    @mock.patch("cond_mail.arg_parser")
+    def test_require_false(self, mock_arg):
 
         """Function:  test_require_false
 
@@ -75,15 +133,14 @@ class UnitTest(unittest.TestCase):
         """
 
         mock_arg.arg_parse2.return_value = self.args
-        mock_help.return_value = False
         mock_arg.arg_require.return_value = False
-        mock_run.return_value = True
+        mock_arg.arg_file_chk.return_value = True
 
         self.assertFalse(cond_mail.main())
 
-    @mock.patch("cond_mail.gen_libs.help_func")
+    @mock.patch("cond_mail.gen_libs.help_func", mock.Mock(return_value=False))
     @mock.patch("cond_mail.arg_parser")
-    def test_require_true(self, mock_arg, mock_help):
+    def test_require_true(self, mock_arg):
 
         """Function:  test_require_true
 
@@ -94,14 +151,13 @@ class UnitTest(unittest.TestCase):
         """
 
         mock_arg.arg_parse2.return_value = self.args
-        mock_help.return_value = False
         mock_arg.arg_require.return_value = True
 
         self.assertFalse(cond_mail.main())
 
-    @mock.patch("cond_mail.gen_libs.help_func")
+    @mock.patch("cond_mail.gen_libs.help_func", mock.Mock(return_value=False))
     @mock.patch("cond_mail.arg_parser")
-    def test_help_false(self, mock_arg, mock_help):
+    def test_help_false(self, mock_arg):
 
         """Function:  test_help_false
 
@@ -112,14 +168,13 @@ class UnitTest(unittest.TestCase):
         """
 
         mock_arg.arg_parse2.return_value = self.args
-        mock_help.return_value = False
         mock_arg.arg_require.return_value = True
 
         self.assertFalse(cond_mail.main())
 
-    @mock.patch("cond_mail.gen_libs.help_func")
+    @mock.patch("cond_mail.gen_libs.help_func", mock.Mock(return_value=True))
     @mock.patch("cond_mail.arg_parser.arg_parse2")
-    def test_help_true(self, mock_arg, mock_help):
+    def test_help_true(self, mock_arg):
 
         """Function:  test_help_true
 
@@ -130,7 +185,6 @@ class UnitTest(unittest.TestCase):
         """
 
         mock_arg.return_value = self.args
-        mock_help.return_value = True
 
         self.assertFalse(cond_mail.main())
 
