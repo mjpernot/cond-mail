@@ -4,16 +4,22 @@
 """Program:     cond_mail.py
 
     Description:  Receives text input and pushes it into sendmail.  Will only
-        send if there is data in the text input.
+        send an email if there is data in the text input.
 
     Usage:
-        Text Input | cond_mail.py -s subject
-            -t to_email1 [to_email2 ...] [-f from_email] [-i [path] filename]
-        cond_mail.py -s subject -t to_email1 [to_email2 ...]
-            [-f from_email] < text_file
-        cond_mail.py -s subject -t to_email1 [to_email2 ...] [-f from_email]
-            [-i [path] filename]
-            [-v | -h]
+
+        Pipe usage:
+            Text Input | cond_mail.py -s subject
+                -t to_email1 [to_email2 ...] [-f from_email]
+
+        Redirect in usage:
+            cond_mail.py -s subject -t to_email1 [to_email2 ...]
+                [-f from_email] < text_file
+
+        File option usage:
+            cond_mail.py -s subject -t to_email1 [to_email2 ...]
+                [-f from_email] [-i [path] filename]
+                [-v | -h]
 
     Arguments:
         -s subject line -> Subject line.  Required argument.
