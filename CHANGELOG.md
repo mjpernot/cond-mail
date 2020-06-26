@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 The format is based on "Keep a Changelog".  This project adheres to Semantic Versioning.
 
 
-## [3.2.4] - 2020-06-15
+## [3.3.0] - 2020-06-15
 ### Added
 - Added -i option to allow for reading from a file instead of using standard in or pipes.
 
