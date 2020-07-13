@@ -1,5 +1,5 @@
 #!/bin/bash
-# Unit test code coverage for cond_mail.py module.
+# Unit test code coverage for the modules in the program.
 # This will run the Python code coverage module against all unit test modules.
 # This will show the amount of code that was tested and which lines of code
 #   that was skipped during the test.

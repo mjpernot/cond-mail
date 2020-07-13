@@ -1,19 +1,6 @@
 #!/usr/bin/python
 # Classification (U)
 
-###############################################################################
-#
-# Program:      run_program.py
-#
-# Class Dependencies:
-#               None
-#
-# Library Dependenices:
-#               cond_mail       => v3.2.0 or higher
-#               lib/gen_libs    => v2.2.0 or higher
-#
-###############################################################################
-
 """Program:  run_program.py
 
     Description:  Unit testing of run_program in cond_mail.py.
@@ -22,7 +9,6 @@
         test/unit/cond_mail/run_program.py
 
     Arguments:
-        None
 
 """
 
@@ -43,10 +29,8 @@ import mock
 # Local
 sys.path.append(os.getcwd())
 import cond_mail
-import lib.gen_libs as gen_libs
 import version
 
-# Version Information
 __version__ = version.__version__
 
 
@@ -56,14 +40,7 @@ class Mail(object):
 
     Description:  Class representation of the gen_class.Mail class.
 
-    Super-Class:  object
-
-    Sub-Classes:  None
-
     Methods:
-        __init__ -> Initialize configuration environment.
-        read_stdin -> Mock of reading from standard in.
-        send_mail -> Mock of sending an email.
 
     """
 
@@ -92,7 +69,6 @@ class Mail(object):
         Description:  Mock of reading from standard in.
 
         Arguments:
-            None
 
         """
 
@@ -105,7 +81,6 @@ class Mail(object):
         Description:  Mock of sending an email.
 
         Arguments:
-            None
 
         """
 
@@ -118,12 +93,12 @@ class UnitTest(unittest.TestCase):
 
     Description:  Class which is a representation of a unit testing.
 
-    Super-Class:  unittest.TestCase
-
-    Sub-Classes:  None
-
     Methods:
         setUp -> Unit testing initilization.
+        test_multiline_file -> Test with -i option with multiple lines.
+        test_empty_file -> Test with -i option with empty file.
+        test_input_file -> Test with -i option.
+        test_empty_str_mail_msg2 -> Test if mail message is an empty string.
         test_empty_str_mail_msg -> Test if mail message is an empty string.
         test_mail_msg -> Test mail message.
         test_empty_mail_msg -> Test if mail message is empty.
@@ -137,11 +112,75 @@ class UnitTest(unittest.TestCase):
         Description:  Initialization for unit testing.
 
         Arguments:
-            None
 
         """
 
-        self.args_array = {"-t": "To line", "-s": "Subject Line"}
+        self.toline = "To line"
+        self.subject = "Subject Line"
+        self.args_array = {"-t": self.toline, "-s": self.subject}
+        self.args_array2 = {"-t": self.toline, "-s": self.subject,
+                            "-i": "test/unit/cond-mail/basefiles/infile1.txt"}
+        self.args_array3 = {"-t": self.toline, "-s": self.subject,
+                            "-i": "test/unit/cond-mail/basefiles/infile2.txt"}
+        self.args_array4 = {"-t": self.toline, "-s": self.subject,
+                            "-i": "test/unit/cond-mail/basefiles/infile3.txt"}
+
+    @mock.patch("cond_mail.gen_class.Mail")
+    def test_multiline_file(self, mock_send):
+
+        """Function:  test_multiline_file
+
+        Description:  Test with -i option with multiple lines.
+
+        Arguments:
+
+        """
+
+        mock_send.send_mail.return_value = True
+
+        self.assertFalse(cond_mail.run_program(self.args_array4))
+
+    def test_empty_file(self):
+
+        """Function:  test_empty_file
+
+        Description:  Test with -i option with empty file.
+
+        Arguments:
+
+        """
+
+        self.assertFalse(cond_mail.run_program(self.args_array3))
+
+    @mock.patch("cond_mail.gen_class.Mail")
+    def test_input_file(self, mock_send):
+
+        """Function:  test_input_file
+
+        Description:  Test with -i option.
+
+        Arguments:
+
+        """
+
+        mock_send.send_mail.return_value = True
+
+        self.assertFalse(cond_mail.run_program(self.args_array2))
+
+    @mock.patch("cond_mail.gen_class.Mail.read_stdin")
+    def test_empty_str_mail_msg2(self, mock_stdin):
+
+        """Function:  test_empty_str_mail_msg
+
+        Description:  Test if mail message is an empty string.
+
+        Arguments:
+
+        """
+
+        mock_stdin.read_stdin.return_value = True
+
+        self.assertFalse(cond_mail.run_program(self.args_array))
 
     @mock.patch("cond_mail.gen_class.Mail")
     def test_empty_str_mail_msg(self, mock_mail):
@@ -151,13 +190,11 @@ class UnitTest(unittest.TestCase):
         Description:  Test if mail message is an empty string.
 
         Arguments:
-            mock_mail -> Mock Ref:  cond_mail.gen_class.Mail
 
         """
 
         mock_mail.return_value = Mail(self.args_array["-t"],
                                       self.args_array["-s"])
-
         mock_mail.return_value.msg = ""
 
         self.assertFalse(cond_mail.run_program(self.args_array))
@@ -170,7 +207,6 @@ class UnitTest(unittest.TestCase):
         Description:  Test mail message.
 
         Arguments:
-            mock_mail -> Mock Ref:  cond_mail.gen_class.Mail
 
         """
 
@@ -187,13 +223,11 @@ class UnitTest(unittest.TestCase):
         Description:  Test if mail message is empty.
 
         Arguments:
-            mock_mail -> Mock Ref:  cond_mail.gen_class.Mail
 
         """
 
         mock_mail.return_value = Mail(self.args_array["-t"],
                                       self.args_array["-s"])
-
         mock_mail.return_value.msg = None
 
         self.assertFalse(cond_mail.run_program(self.args_array))
