@@ -1,19 +1,6 @@
 #!/usr/bin/python
 # Classification (U)
 
-###############################################################################
-#
-# Program:      help_message.py
-#
-# Class Dependencies:
-#               None
-#
-# Library Dependenices:
-#               cond_mail       => v3.2.0 or higher
-#               lib/gen_libs    => v2.2.0 or higher
-#
-###############################################################################
-
 """Program:  help_message.py
 
     Description:  Unit testing of help_message in cond_mail.py.
@@ -22,7 +9,6 @@
         test/unit/cond_mail/help_message.py
 
     Arguments:
-        None
 
 """
 
@@ -45,7 +31,6 @@ import cond_mail
 import lib.gen_libs as gen_libs
 import version
 
-# Version Information
 __version__ = version.__version__
 
 
@@ -54,10 +39,6 @@ class UnitTest(unittest.TestCase):
     """Class:  UnitTest
 
     Description:  Class which is a representation of a unit testing.
-
-    Super-Class:  unittest.TestCase
-
-    Sub-Classes:  None
 
     Methods:
         test_help_message -> Test with no arguments.
@@ -71,7 +52,6 @@ class UnitTest(unittest.TestCase):
         Description:  Test help_message function.
 
         Arguments:
-            None
 
         """
 

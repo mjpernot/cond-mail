@@ -4,6 +4,19 @@ All notable changes to this project will be documented in this file.
 The format is based on "Keep a Changelog".  This project adheres to Semantic Versioning.
 
 
+## [3.3.0] - 2020-06-15
+### Added
+- Added -i option to allow for reading from a file instead of using standard in or pipes.
+
+### Fixed
+- main:  Fixed handling command line arguments from SonarQube scan finding.
+
+### Changed
+- run_program:  Added -i option to handle file processing.
+- main: Added -i option to handle file and validating the file.
+- Documentation updates.
+
+
 ## [3.2.3] - 2019-05-07
 ### Fixed
 - run_program:  Fixed problem with mutable default arguments issue.
@@ -52,7 +65,7 @@ Breaking Change
 
 ## [2.2.0] - 2017-08-16
 ### Changed
-- Help_Message:  Replace docstring with printing the programs __doc__.
+- Help_Message:  Replace docstring with printing the programs \_\_doc\_\_.
 - Change single quotes to double quotes.
 - Changed local libraries to use modules in ./lib directory.
 
