@@ -19,14 +19,16 @@
         File option usage:
             cond_mail.py -s subject -t to_email1 [to_email2 ...]
                 [-f from_email] [-i [path] filename]
-                [-v | -h]
 
     Arguments:
         -s subject line -> Subject line.  Required argument.
         -t to_email(s) -> To email address(es).  Multiple email addresses are
             space-delimited.  Required argument.
+
         -f from_email -> From email address.  Format:  user_name@domain_name.
+
         -i filename -> Path and file name to read into email body.
+
         -v -> Display version of this program.
         -h -> Help and usage message.
 
