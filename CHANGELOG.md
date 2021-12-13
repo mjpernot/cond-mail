@@ -5,6 +5,9 @@ The format is based on "Keep a Changelog".  This project adheres to Semantic Ver
 
 
 ## [3.3.1] - 2021-12-13
+### Fixed
+- run_program:  Removed rstrip calls on the input file lines.
+
 ### Changed
 - Documentation updates.
 

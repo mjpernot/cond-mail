@@ -91,8 +91,7 @@ def run_program(args_array, **kwargs):
     if args_array.get("-i", False):
 
         with open(args_array["-i"]) as f_hdlr:
-
-            for line in [x.rstrip().rstrip("\n") for x in f_hdlr]:
+            for line in f_hdlr:
                 mail.add_2_msg(line)
 
     else:
