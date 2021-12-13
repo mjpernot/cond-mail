@@ -41,6 +41,9 @@ class Mail(object):
     Description:  Class representation of the gen_class.Mail class.
 
     Methods:
+        __init__
+        read_stdin
+        send_mail
 
     """
 
@@ -51,9 +54,6 @@ class Mail(object):
         Description:  Initialization instance of the class.
 
         Arguments:
-            to_line -> To line on email.
-            sub -> Subject line on email.
-            frm_line -> From line on email.
 
         """
 
@@ -94,14 +94,14 @@ class UnitTest(unittest.TestCase):
     Description:  Class which is a representation of a unit testing.
 
     Methods:
-        setUp -> Unit testing initilization.
-        test_multiline_file -> Test with -i option with multiple lines.
-        test_empty_file -> Test with -i option with empty file.
-        test_input_file -> Test with -i option.
-        test_empty_str_mail_msg2 -> Test if mail message is an empty string.
-        test_empty_str_mail_msg -> Test if mail message is an empty string.
-        test_mail_msg -> Test mail message.
-        test_empty_mail_msg -> Test if mail message is empty.
+        setUp
+        test_multiline_file
+        test_empty_file
+        test_input_file
+        test_empty_str_mail_msg2
+        test_empty_str_mail_msg
+        test_mail_msg
+        test_empty_mail_msg
 
     """
 
