@@ -100,7 +100,7 @@ def run_program(args_array):
         mail.read_stdin()
 
     if mail.msg and len(mail.msg.rstrip()) > 0:
-        mail.send_mail()
+        mail.send_mail(use_mailx=args_array.get("-u", False))
 
 
 def main():
@@ -127,8 +127,8 @@ def main():
     opt_val_list = ["-s", "-t", "-f", "-i"]
 
     # Process argument list from command line.
-    args_array = arg_parser.arg_parse2(cmdline.argv, opt_val_list,
-                                       multi_val=opt_multi_list)
+    args_array = arg_parser.arg_parse2(
+        cmdline.argv, opt_val_list, multi_val=opt_multi_list)
 
     if not gen_libs.help_func(args_array, __version__, help_message) \
        and not arg_parser.arg_require(args_array, opt_req_list) \
