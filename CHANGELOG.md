@@ -40,9 +40,7 @@ The format is based on "Keep a Changelog".  This project adheres to Semantic Ver
 
 ## [3.2.0] - 2018-10-02
 ### Changed
-- run_program:  The "From line" in the email will always be set with a default value or user-defined value.
-- run_program:  Changed "-s" option to allow for multiple values in subject line.
-- run_program:  Checked that the Mail message is not an empty string.
+- run_program:  The "From line" in the email will always be set with a default value or user-defined value, changed "-s" option to allow for multiple values in subject line and checked that the Mail message is not an empty string.
 - main:  Allow "-s" option to have multiple values.
 
 
@@ -91,10 +89,10 @@ Breaking Change
 - Run_Program:  To control running of program.
 
 ### Removed
-- Read_Text function.
-- Create_Body function.
-- Send_Mail function.
-- Removed smtplib module.
+- Read_Text
+- Create_Body
+- Send_Mail
+- smtplib module.
 
 
 ## [1.2.0] - 2016-04-12
