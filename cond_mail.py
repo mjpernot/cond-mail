@@ -72,7 +72,7 @@ def help_message():
     print(__doc__)
 
 
-def run_program(args_array, **kwargs):
+def run_program(args_array):
 
     """Function:  run_program
 

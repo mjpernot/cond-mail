@@ -9,6 +9,7 @@ The format is based on "Keep a Changelog".  This project adheres to Semantic Ver
 - run_program:  Removed rstrip calls on the input file lines.
 
 ### Changed
+- Removed non-required \*\*kwargs from function parameter list.
 - Documentation updates.
 
 
