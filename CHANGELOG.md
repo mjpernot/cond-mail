@@ -5,6 +5,8 @@ The format is based on "Keep a Changelog".  This project adheres to Semantic Ver
 
 
 ## [3.3.1] - 2021-12-13
+- Allow to override the default sendmail (postfix) and use mailx command.
+
 ### Fixed
 - run_program:  Removed rstrip calls on the input file lines.
 

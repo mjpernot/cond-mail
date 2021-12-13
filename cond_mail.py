@@ -10,14 +10,14 @@
 
         Pipe usage:
             Text Input | cond_mail.py -s subject
-                -t to_email1 [to_email2 ...] [-f from_email]
+                -t to_email1 [to_email2 ...] [-f from_email] [-u]
 
         Redirect in usage:
-            cond_mail.py -s subject -t to_email1 [to_email2 ...]
+            cond_mail.py -s subject -t to_email1 [to_email2 ...] [-u]
                 [-f from_email] < text_file
 
         File option usage:
-            cond_mail.py -s subject -t to_email1 [to_email2 ...]
+            cond_mail.py -s subject -t to_email1 [to_email2 ...] [-u]
                 [-f from_email] [-i [path] filename]
 
     Arguments:
@@ -28,6 +28,8 @@
         -f from_email -> From email address.  Format:  user_name@domain_name.
 
         -i filename -> Path and file name to read into email body.
+
+        -u => Override the default mail command and use mailx.
 
         -v -> Display version of this program.
         -h -> Help and usage message.
