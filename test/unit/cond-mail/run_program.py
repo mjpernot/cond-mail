@@ -74,7 +74,7 @@ class Mail(object):
 
         return True
 
-    def send_mail(self):
+    def send_mail(self, use_mailx=False):
 
         """Method:  send_mail
 
@@ -84,7 +84,12 @@ class Mail(object):
 
         """
 
-        return True
+        status = True
+
+        if use_mailx:
+            status = True
+
+        return status
 
 
 class UnitTest(unittest.TestCase):
@@ -95,6 +100,7 @@ class UnitTest(unittest.TestCase):
 
     Methods:
         setUp
+        test_mailx
         test_multiline_file
         test_empty_file
         test_input_file
@@ -124,6 +130,23 @@ class UnitTest(unittest.TestCase):
                             "-i": "test/unit/cond-mail/basefiles/infile2.txt"}
         self.args_array4 = {"-t": self.toline, "-s": self.subject,
                             "-i": "test/unit/cond-mail/basefiles/infile3.txt"}
+        self.args_array5 = {"-t": self.toline, "-s": self.subject, "-u": True}
+
+    @mock.patch("cond_mail.gen_class.Mail")
+    def test_mailx(self, mock_mail):
+
+        """Function:  test_mailx
+
+        Description:  Test using mailx command.
+
+        Arguments:
+
+        """
+
+        mock_mail.return_value = Mail(self.args_array["-t"],
+                                      self.args_array["-s"])
+
+        self.assertFalse(cond_mail.run_program(self.args_array5))
 
     @mock.patch("cond_mail.gen_class.Mail")
     def test_multiline_file(self, mock_send):
