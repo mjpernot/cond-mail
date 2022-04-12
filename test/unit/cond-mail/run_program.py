@@ -41,6 +41,9 @@ class Mail(object):
     Description:  Class representation of the gen_class.Mail class.
 
     Methods:
+        __init__
+        read_stdin
+        send_mail
 
     """
 
@@ -51,9 +54,6 @@ class Mail(object):
         Description:  Initialization instance of the class.
 
         Arguments:
-            to_line -> To line on email.
-            sub -> Subject line on email.
-            frm_line -> From line on email.
 
         """
 
@@ -74,7 +74,7 @@ class Mail(object):
 
         return True
 
-    def send_mail(self):
+    def send_mail(self, use_mailx=False):
 
         """Method:  send_mail
 
@@ -84,7 +84,12 @@ class Mail(object):
 
         """
 
-        return True
+        status = True
+
+        if use_mailx:
+            status = True
+
+        return status
 
 
 class UnitTest(unittest.TestCase):
@@ -94,14 +99,15 @@ class UnitTest(unittest.TestCase):
     Description:  Class which is a representation of a unit testing.
 
     Methods:
-        setUp -> Unit testing initilization.
-        test_multiline_file -> Test with -i option with multiple lines.
-        test_empty_file -> Test with -i option with empty file.
-        test_input_file -> Test with -i option.
-        test_empty_str_mail_msg2 -> Test if mail message is an empty string.
-        test_empty_str_mail_msg -> Test if mail message is an empty string.
-        test_mail_msg -> Test mail message.
-        test_empty_mail_msg -> Test if mail message is empty.
+        setUp
+        test_mailx
+        test_multiline_file
+        test_empty_file
+        test_input_file
+        test_empty_str_mail_msg2
+        test_empty_str_mail_msg
+        test_mail_msg
+        test_empty_mail_msg
 
     """
 
@@ -124,6 +130,23 @@ class UnitTest(unittest.TestCase):
                             "-i": "test/unit/cond-mail/basefiles/infile2.txt"}
         self.args_array4 = {"-t": self.toline, "-s": self.subject,
                             "-i": "test/unit/cond-mail/basefiles/infile3.txt"}
+        self.args_array5 = {"-t": self.toline, "-s": self.subject, "-u": True}
+
+    @mock.patch("cond_mail.gen_class.Mail")
+    def test_mailx(self, mock_mail):
+
+        """Function:  test_mailx
+
+        Description:  Test using mailx command.
+
+        Arguments:
+
+        """
+
+        mock_mail.return_value = Mail(self.args_array["-t"],
+                                      self.args_array["-s"])
+
+        self.assertFalse(cond_mail.run_program(self.args_array5))
 
     @mock.patch("cond_mail.gen_class.Mail")
     def test_multiline_file(self, mock_send):
