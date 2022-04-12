@@ -24,13 +24,9 @@
         -s subject line -> Subject line.  Required argument.
         -t to_email(s) -> To email address(es).  Multiple email addresses are
             space-delimited.  Required argument.
-
         -f from_email -> From email address.  Format:  user_name@domain_name.
-
         -i filename -> Path and file name to read into email body.
-
         -u => Override the default mail command and use mailx.
-
         -v -> Display version of this program.
         -h -> Help and usage message.
 
