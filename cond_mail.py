@@ -41,11 +41,14 @@
 """
 
 # Libraries and Global Variables
+from __future__ import print_function
 
 # Standard
 import sys
 import socket
 import getpass
+
+# Third party
 
 # Local
 import lib.gen_class as gen_class

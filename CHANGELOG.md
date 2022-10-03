@@ -7,6 +7,7 @@ The format is based on "Keep a Changelog".  This project adheres to Semantic Ver
 ## [3.3.2] - 2022-09-28
 - Updated to work in Python 3 too.
 - Upgraded python-lib to v2.9.4
+- Added \_\_future\_\_ modules for Python 2.
 
 
 ## [3.3.1] - 2021-12-13
