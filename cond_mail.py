@@ -48,8 +48,6 @@ import sys
 import socket
 import getpass
 
-# Third party
-
 # Local
 import lib.gen_class as gen_class
 import lib.arg_parser as arg_parser
