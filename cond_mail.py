@@ -42,19 +42,25 @@
 
 # Libraries and Global Variables
 from __future__ import print_function
+from __future__ import absolute_import
 
 # Standard
 import sys
 import socket
 import getpass
 
-# Third party
-
 # Local
-import lib.gen_class as gen_class
-import lib.arg_parser as arg_parser
-import lib.gen_libs as gen_libs
-import version
+try:
+    from .lib import gen_class
+    from .lib import arg_parser
+    from .lib import gen_libs
+    from . import version
+
+except (ValueError, ImportError) as err:
+    import lib.gen_class as gen_class
+    import lib.arg_parser as arg_parser
+    import lib.gen_libs as gen_libs
+    import version
 
 __version__ = version.__version__
 
