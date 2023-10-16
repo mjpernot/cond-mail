@@ -77,25 +77,24 @@ def help_message():
     print(__doc__)
 
 
-def run_program(args_array):
+def run_program(args):
 
     """Function:  run_program
 
     Description:  Creates class instance(s) and controls flow of the program.
 
     Arguments:
-        (input) args_array -> Dict of command line options and values
+        (input) args -> ArgParser class instance
 
     """
 
-    args_array = dict(args_array)
     mail = gen_class.Mail(
-        args_array["-t"], " ".join(args_array["-s"]),
-        args_array.get("-f", getpass.getuser() + "@" + socket.gethostname()))
+        args.get_val("-t"), args.get_val("-s"),
+        args.get_val(
+            "-f", def_val=getpass.getuser() + "@" + socket.gethostname()))
 
-    if args_array.get("-i", False):
-
-        with open(args_array["-i"]) as f_hdlr:
+    if args.arg_exist("-i"):
+        with open(args.get_val("-i")) as f_hdlr:
             for line in f_hdlr:
                 mail.add_2_msg(line)
 
@@ -103,7 +102,7 @@ def run_program(args_array):
         mail.read_stdin()
 
     if mail.msg and len(mail.msg.rstrip()) > 0:
-        mail.send_mail(use_mailx=args_array.get("-u", False))
+        mail.send_mail(use_mailx=args.arg_exist("-u"))
 
 
 def main():
@@ -114,6 +113,7 @@ def main():
         line arguments and values.
 
     Variables:
+        file_perm_chk -> file check options with their perms in octal
         opt_multi_list -> contains the options that will have multiple values
         opt_req_list -> contains the options that are required for the program
         opt_val_list -> contains options which require values
@@ -123,20 +123,20 @@ def main():
 
     """
 
-    cmdline = gen_libs.get_inst(sys)
-    file_chk_list = ["-i"]
+    file_perm_chk = {"-i": 4}
     opt_multi_list = ["-t", "-s"]
     opt_req_list = ["-s", "-t"]
     opt_val_list = ["-s", "-t", "-f", "-i"]
 
-    # Process argument list from command line.
-    args_array = arg_parser.arg_parse2(
-        cmdline.argv, opt_val_list, multi_val=opt_multi_list)
+    # Process argument list from command line
+    args = gen_class.ArgParser(
+        sys.argv, opt_val=opt_val_list, multi_val=opt_multi_list,
+        do_parse=True)
 
-    if not gen_libs.help_func(args_array, __version__, help_message) \
-       and not arg_parser.arg_require(args_array, opt_req_list) \
-       and not arg_parser.arg_file_chk(args_array, file_chk_list):
-        run_program(args_array)
+    if not gen_libs.help_func(args, __version__, help_message)  \
+       and args.arg_require(opt_req=opt_req_list)               \
+       and args.arg_file_chk(file_perm_chk=file_perm_chk):
+        run_program(args)
 
 
 if __name__ == "__main__":
