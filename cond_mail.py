@@ -52,13 +52,11 @@ import getpass
 # Local
 try:
     from .lib import gen_class
-    from .lib import arg_parser
     from .lib import gen_libs
     from . import version
 
 except (ValueError, ImportError) as err:
     import lib.gen_class as gen_class
-    import lib.arg_parser as arg_parser
     import lib.gen_libs as gen_libs
     import version
 
@@ -86,7 +84,7 @@ def run_program(args_array):
     Description:  Creates class instance(s) and controls flow of the program.
 
     Arguments:
-        (input) args_array -> Dict of command line options and values.
+        (input) args_array -> Dict of command line options and values
 
     """
 
@@ -116,12 +114,12 @@ def main():
         line arguments and values.
 
     Variables:
-        opt_multi_list -> contains the options that will have multiple values.
-        opt_req_list -> contains the options that are required for the program.
-        opt_val_list -> contains options which require values.
+        opt_multi_list -> contains the options that will have multiple values
+        opt_req_list -> contains the options that are required for the program
+        opt_val_list -> contains options which require values
 
     Arguments:
-        (input) argv -> Arguments from the command line.
+        (input) argv -> Arguments from the command line
 
     """
 
