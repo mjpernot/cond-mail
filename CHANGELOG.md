@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 The format is based on "Keep a Changelog".  This project adheres to Semantic Versioning.
 
 
+## [3.4.1] - 2024-01-30
+- Updated to work in Red Hat 8
+
+
 ## [3.4.0] - 2023-10-16
 - Replaced the arg_parser code with gen_class.ArgParser code.
 - Upgraded python-lib to v2.10.1
