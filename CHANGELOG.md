@@ -5,7 +5,7 @@ The format is based on "Keep a Changelog".  This project adheres to Semantic Ver
 
 
 ## [3.4.2] - 2024-02-26
-- Updated to work in Red Hat 8
+- Further updated to work in Red Hat 8
 - Updated python-lib to v3.0.3
 
 ### Changed
