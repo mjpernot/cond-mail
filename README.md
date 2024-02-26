@@ -22,7 +22,6 @@
 # Prerequisites:
 
   * List of Linux packages that need to be installed on the server.
-    - git
     - Centos 7 (Running Python 2.7):
       -> python-pip
     - Redhat 8 (Running Python 3.6):
