@@ -42,6 +42,7 @@ class ArgParser(object):
         arg_file_chk
         arg_require
         get_val
+        arg_parse2
 
     """
 
@@ -64,6 +65,7 @@ class ArgParser(object):
         self.arg_file_chk2 = True
         self.opt_req = None
         self.opt_req2 = True
+        self.argparse2 = True
 
     def arg_file_chk(self, file_perm_chk):
 
@@ -93,6 +95,18 @@ class ArgParser(object):
 
         return self.opt_req2
 
+    def arg_parse2(self):
+
+        """Method:  arg_parse2
+
+        Description:  Method stub holder for gen_class.ArgParser.arg_parse2.
+
+        Arguments:
+
+        """
+
+        return self.argparse2
+
 
 class UnitTest(unittest.TestCase):
 
@@ -102,6 +116,8 @@ class UnitTest(unittest.TestCase):
 
     Methods:
         setUp
+        test_arg_parse2_false
+        test_arg_parse2_true
         test_help_true
         test_help_false
         test_require_false
@@ -124,6 +140,40 @@ class UnitTest(unittest.TestCase):
 
         self.args = ArgParser()
         self.args.args_array = {"-s": "Subject line", "-t": "To Line Address"}
+
+    @mock.patch("cond_mail.gen_class.ArgParser")
+    def test_arg_parse2_false(self, mock_arg):
+
+        """Function:  test_arg_parse2_false
+
+        Description:  Test arg_parse2 returns false.
+
+        Arguments:
+
+        """
+
+        self.args.argparse2 = False
+
+        mock_arg.return_value = self.args
+
+        self.assertFalse(cond_mail.main())
+
+    @mock.patch("cond_mail.gen_libs.help_func")
+    @mock.patch("cond_mail.gen_class.ArgParser")
+    def test_arg_parse2_true(self, mock_arg, mock_help):
+
+        """Function:  test_arg_parse2_true
+
+        Description:  Test arg_parse2 returns true.
+
+        Arguments:
+
+        """
+
+        mock_arg.return_value = self.args
+        mock_help.return_value = True
+
+        self.assertFalse(cond_mail.main())
 
     @mock.patch("cond_mail.gen_libs.help_func", mock.Mock(return_value=True))
     @mock.patch("cond_mail.gen_class.ArgParser")
