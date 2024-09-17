@@ -130,11 +130,11 @@ def main():
 
     # Process argument list from command line
     args = gen_class.ArgParser(
-        sys.argv, opt_val=opt_val_list, multi_val=opt_multi_list,
-        do_parse=True)
+        sys.argv, opt_val=opt_val_list, multi_val=opt_multi_list)
 
-    if not gen_libs.help_func(args, __version__, help_message)  \
-       and args.arg_require(opt_req=opt_req_list)               \
+    if args.arg_parse2()                                            \
+       and not gen_libs.help_func(args, __version__, help_message)  \
+       and args.arg_require(opt_req=opt_req_list)                   \
        and args.arg_file_chk(file_perm_chk=file_perm_chk):
         run_program(args)
 
