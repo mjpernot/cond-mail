@@ -87,7 +87,7 @@ Install the project using the procedures in the Installation section.
 
 ```
 cd {Python_Project}/cond-mail
-test/unit/cond_mail/unit_test_run.sh
+test/unit/cond_mail/unit_test_run3.sh
 ```
 
 ### Code coverage:
