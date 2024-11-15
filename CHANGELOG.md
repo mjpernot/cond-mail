@@ -4,6 +4,15 @@ All notable changes to this project will be documented in this file.
 The format is based on "Keep a Changelog".  This project adheres to Semantic Versioning.
 
 
+## [3.4.5] - 2024-11-15
+
+### Fixed
+- Set chardet==3.0.4 for Python 3.
+
+### Deprecated
+- Support for Python 2.7
+
+
 ## [3.4.4] - 2024-11-07
 - Updated simplejson==3.13.2 for Python 3
 - Updated python-lib to v3.0.7
