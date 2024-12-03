@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 The format is based on "Keep a Changelog".  This project adheres to Semantic Versioning.
 
 
+## [4.0.0] - 2024-12-03
+Breaking Changes
+
+- Removed support for Python 2.7.
+- Updated python-lib v3.0.8
+
+### Changed
+- run_program: Added encoding parameter to open() command.
+
+
 ## [3.4.5] - 2024-11-15
 
 ### Fixed

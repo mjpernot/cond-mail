@@ -41,8 +41,6 @@
 """
 
 # Libraries and Global Variables
-from __future__ import print_function
-from __future__ import absolute_import
 
 # Standard
 import sys
@@ -50,15 +48,9 @@ import socket
 import getpass
 
 # Local
-try:
-    from .lib import gen_class
-    from .lib import gen_libs
-    from . import version
-
-except (ValueError, ImportError) as err:
-    import lib.gen_class as gen_class
-    import lib.gen_libs as gen_libs
-    import version
+import lib.gen_class as gen_class   # pylint:disable=R0402,E0401
+import lib.gen_libs as gen_libs     # pylint:disable=R0402,E0401
+import version                      # pylint:disable=E0401
 
 __version__ = version.__version__
 
@@ -94,7 +86,7 @@ def run_program(args):
             "-f", def_val=getpass.getuser() + "@" + socket.gethostname()))
 
     if args.arg_exist("-i"):
-        with open(args.get_val("-i")) as f_hdlr:
+        with open(args.get_val("-i"), encoding="UTF-8") as f_hdlr:
             for line in f_hdlr:
                 mail.add_2_msg(line)
 
