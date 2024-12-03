@@ -6,7 +6,7 @@
 
 echo ""
 echo "Unit test:"
-/usr/bin/python2 ./test/unit/cond-mail/help_message.py
-/usr/bin/python2 ./test/unit/cond-mail/run_program.py
-/usr/bin/python2 ./test/unit/cond-mail/main.py
+/usr/bin/python ./test/unit/cond-mail/help_message.py
+/usr/bin/python ./test/unit/cond-mail/run_program.py
+/usr/bin/python ./test/unit/cond-mail/main.py
 

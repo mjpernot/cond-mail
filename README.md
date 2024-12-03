@@ -22,30 +22,18 @@
 # Prerequisites:
 
   * List of Linux packages that need to be installed on the server.
-    - Centos 7 (Running Python 2.7):
-      -> python-pip
-    - Redhat 8 (Running Python 3.6):
-      -> python3-pip
+    - python3-pip
 
 
 # Installation:
 
 Install these programs using git.
-  * From here on out, any reference to **{Python_Project}** or **PYTHON_PROJECT** replace with the baseline path of the python program.
 
 ```
 git clone git@sc.appdev.proj.coe.ic.gov:JAC-DSXD/cond-mail.git
-cd cond-mail
 ```
 
 Install/upgrade system modules.
-
-Centos 7 (Running Python 2.7):
-```
-sudo pip install -r requirements.txt --upgrade --trusted-host pypi.appdev.proj.coe.ic.gov
-```
-
-Redhat 8 (Running Python 3.6):
 NOTE: Install as the user that will run the program.
 
 ```
@@ -55,12 +43,6 @@ python -m pip install --user -r requirements3.txt --upgrade --trusted-host pypi.
 
 Install supporting classes and libraries.
 
-Centos 7 (Running Python 2.7):
-```
-pip install -r requirements-python-lib.txt --target lib --trusted-host pypi.appdev.proj.coe.ic.gov
-```
-
-Redhat 8 (Running Python 3.6):
 ```
 python -m pip install -r requirements-python-lib.txt --target lib --trusted-host pypi.appdev.proj.coe.ic.gov
 ```
@@ -71,7 +53,7 @@ python -m pip install -r requirements-python-lib.txt --target lib --trusted-host
   All of the programs, except the command and class files, will have an -h (Help option) that will show display a help message for that particular program.  The help message will usually consist of a description, usage, arugments to the program, example, notes about the program, and any known bugs not yet fixed.  To run the help command:
 
 ```
-{Python_Project}/cond-mail/cond_mail.py -h
+cond-mail/cond_mail.py -h
 ```
 
 
@@ -86,14 +68,12 @@ Install the project using the procedures in the Installation section.
 # Testing:
 
 ```
-cd {Python_Project}/cond-mail
-test/unit/cond_mail/unit_test_run3.sh
+test/unit/cond_mail/unit_test_run.sh
 ```
 
 ### Code coverage:
 
 ```
-cd {Python_Project}/cond-mail
 test/unit/cond_mail/code_coverage.sh
 ```
 
