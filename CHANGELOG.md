@@ -8,10 +8,13 @@ The format is based on "Keep a Changelog".  This project adheres to Semantic Ver
 Breaking Changes
 
 - Removed support for Python 2.7.
-- Updated python-lib v3.0.8
+- Updated python-lib v4.0.0
 
 ### Changed
 - run_program: Added encoding parameter to open() command.
+
+### Removed
+- Removed "from \_\_future\_\_ import" library modules.
 
 
 ## [3.4.5] - 2024-11-15
