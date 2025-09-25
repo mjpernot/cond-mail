@@ -69,11 +69,6 @@ Install the project using the procedures in the Installation section.
 
 ```
 test/unit/cond_mail/unit_test_run.sh
-```
-
-### Code coverage:
-
-```
 test/unit/cond_mail/code_coverage.sh
 ```
 
